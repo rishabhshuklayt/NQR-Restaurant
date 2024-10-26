@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./Button/Button";
 import TripleImage from "./MicroComponents/TripleImage";
 import { FaMinus } from "react-icons/fa6";
@@ -8,39 +8,101 @@ import { Link } from "react-router-dom";
 
 
 
+// function Card() {
+//   return (
+//     <div className="flex justify-center items-center  ">
+//       <div className="border border-zinc-200 border-opacity-85 rounded-md w-40 sm:w-48 bg-white ">
+//         <img
+//           src="https://picsum.photos/400/800
+// "
+//           className="w-48 h-44 rounded-md object-cover"
+//           alt=""
+//           srcset=""
+//         />
+//         <div className="flex justify-between">
+//           <h2 className="text-xl font-bold inline-flex items-center gap-2 ">
+//             Card Title{" "}
+//             <img
+//               src="https://i.pinimg.com/736x/e4/1f/f3/e41ff3b10a26b097602560180fb91a62.jpg"
+//               alt=""
+//               srcset=""
+//               className="w-4 h-4 rounded-md"
+//             />
+//           </h2>
+//           <h2>$ 2.99</h2>
+//         </div>
+//         <div className=" flex justify-between  ">
+//           {/* <Button value="know more!" style="bg-green-500" /> */}
+//           <Model />
+//           <Button value="Add to Plate" style="bg-yellow-400" />
+//         </div>
+//         {/* <p  className="mt-2 text-sm text-zinc-800 overflow-clip">Lorem, ipsum dolor sit amet</p> */}
+//       </div>
+//     </div>
+//   );
+// }
+
+
 function Card() {
+  const [meal, setMeal] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch meal data using async/await
+  const fetchMeal = async () => {
+    try {
+      const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setMeal(data.meals[0]); // Set the first meal from the response
+    } catch (error) {
+      console.error("Error fetching meal data:", error);
+    } finally {
+      setLoading(false); // Stop loading whether successful or failed
+    }
+  };
+
+  useEffect(() => {
+    fetchMeal();
+  }, []);
+
+  
+
+  if (loading) return <div>Loading...</div>; // Show loading while fetching data
+
   return (
-    <div className="flex justify-center items-center  ">
-      <div className="border border-zinc-200 border-opacity-85 rounded-md w-40 sm:w-48 bg-white ">
+    <div className="flex justify-center items-center">
+      <div className="border border-zinc-200 border-opacity-85 rounded-md w-40 sm:w-48 bg-white">
         <img
-          src="https://picsum.photos/400/800
-"
+          src={meal.strMealThumb}
           className="w-48 h-44 rounded-md object-cover"
-          alt=""
-          srcset=""
+          alt={meal.strMeal}
         />
-        <div className="flex justify-between">
-          <h2 className="text-xl font-bold inline-flex items-center gap-2 ">
-            Card Title{" "}
-            <img
-              src="https://i.pinimg.com/736x/e4/1f/f3/e41ff3b10a26b097602560180fb91a62.jpg"
-              alt=""
-              srcset=""
-              className="w-4 h-4 rounded-md"
+        <div className="flex justify-between p-2">
+          <h2 className="text-lg font-bold inline-flex items-center gap-2 truncate ">
+            {meal.strMeal}{"... "}
+            <img 
+              src={`${meal.strCategory === "Vegetarian" ? "https://i.pinimg.com/736x/e4/1f/f3/e41ff3b10a26b097602560180fb91a62.jpg" : "https://spaces-cdn.clipsafari.com/j1ijpx8yuw3ev0rmtwipup22p0a4"}`}
+              alt="Meal icon"
+              className="w-4 h-4 rounded-md object-cover"
             />
           </h2>
-          <h2>$ 2.99</h2>
+          <h2>${(Math.random() * 10 + 2).toFixed(2)}</h2> {/* Random price */}
         </div>
+        <div className="flex justify-between p-2">
         <div className=" flex justify-between  ">
           {/* <Button value="know more!" style="bg-green-500" /> */}
-          <Model />
+          <Model title={meal.strMeal} image={meal.strMealThumb} type={meal.strCategory} about={meal.strInstructions} ingrediant={meal.strIngrediant1}  />
           <Button value="Add to Plate" style="bg-yellow-400" />
         </div>
-        {/* <p  className="mt-2 text-sm text-zinc-800 overflow-clip">Lorem, ipsum dolor sit amet</p> */}
+        </div>
       </div>
     </div>
   );
 }
+
+
 
 function CartCard() {
   return (
