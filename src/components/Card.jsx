@@ -5,6 +5,8 @@ import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import Model from "./Models/Model";
 import { Link } from "react-router-dom";
+import { TbEditCircle } from "react-icons/tb";
+import { AiFillDelete } from "react-icons/ai";
 
 
 
@@ -93,7 +95,7 @@ function Card() {
         <div className="flex justify-between p-2">
         <div className=" flex justify-between  ">
           {/* <Button value="know more!" style="bg-green-500" /> */}
-          <Model title={meal.strMeal} image={meal.strMealThumb} type={meal.strCategory} about={meal.strInstructions} ingrediant={meal.strIngrediant1}  />
+          <Model title={meal.strMeal} image={meal.strMealThumb} type={meal.strCategory} about={meal.strInstructions} ingrediant={meal.strIngredient1}  />
           <Button value="Add to Plate" style="bg-yellow-400" />
         </div>
         </div>
@@ -187,5 +189,36 @@ function OrderCard() {
 }
 
 
+function EditCard(){
+  return (
+    <div>
+        <div className="bg-zinc-200 flex items-center gap-2 mt-3">
+          <img
+            src="https://picsum.photos/400/800"
+            className=" ml-2 object-cover h-20 rounded-lg w-20"
+            alt="img"
+            srcset=""
+          />
+          <div>
+            <h1 className="text-xl">Big tasty pies</h1>
 
-export { Card, CartCard, TrackCard, OrderCard };
+            <p className="flex text-zinc-700">
+              description <img src="" alt="🟢" />
+            </p>
+
+            <h1>$94.99</h1>
+          </div>
+          <div className="gap-2 flex ml-3">
+            <button className="bg-green-500 rounded-full p-3">
+              <TbEditCircle size={40} />
+            </button>
+            <button className="bg-red-500 rounded-full p-3">
+              <AiFillDelete size={40} />
+            </button>
+          </div>
+        </div>
+      </div>
+)}
+
+
+export { Card, CartCard, TrackCard, OrderCard, EditCard };

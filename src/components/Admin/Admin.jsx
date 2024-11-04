@@ -7,6 +7,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';  // You can change this to another theme
 import { OrderCard } from '../Card';
 import { Link } from 'react-router-dom';
+import SidebarComp from './SidebarComp';
 
 
 
@@ -25,9 +26,12 @@ function Admin() {
 
     return (
         <div className="card bg-zinc-100 h-screen">
-            <div className="w-full bg-white h-11 flex items-center pl-4 shadow-black drop-shadow-lg">
+            <div className="w-full justify-between  bg-white h-11 flex items-center pl-4 shadow-black drop-shadow-lg">
                 <Link to="/">
                 <h1>Welcome Rishabh!</h1>
+                </Link>
+                <Link>
+                <SidebarComp />
                 </Link>
             </div>
             <div  className='bg-white rounded-md container mx-auto'>

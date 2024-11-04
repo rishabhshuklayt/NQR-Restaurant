@@ -7,6 +7,7 @@ import TrackOrder from "./components/Pages/TrackOrder";
 import Trending from "./components/Pages/Trending";
 import Categories from "./components/Pages/Categories";
 import Admin from "./components/Admin/Admin";
+import AddItem from "./components/Admin/AddItem";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/trending" element={<Trending />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/add-items" element={<AddItem />} />
+
       </Routes>
     </div>
   );
