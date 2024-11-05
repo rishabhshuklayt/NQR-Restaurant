@@ -3,6 +3,8 @@ import { Sidebar } from 'primereact/sidebar';
 // import { Button } from '../Button/Button';
 import { Button } from 'primereact/button'; 
 import { NavLink } from 'react-router-dom';
+import { CiMenuBurger } from "react-icons/ci";
+
 
  function SidebarComp() {
     
@@ -14,7 +16,8 @@ import { NavLink } from 'react-router-dom';
             <div className="flex gap-2 justify-content-center">
                
                 {/* <Button value="Sidebar" style="bg-yellow-500" onClick={() => setVisibleRight(true)} /> */}
-                <Button label="hello" onClick={() => setVisibleRight(true)} />
+                <Button label={<CiMenuBurger />
+} onClick={() => setVisibleRight(true)} className='mr-4' />
 
                
             </div>
