@@ -25,31 +25,29 @@ function Admin() {
     };
 
     return (
-        <div className="card bg-zinc-100 h-screen">
-            <div className="w-full justify-between  bg-white h-11 flex items-center pl-4 shadow-black drop-shadow-lg">
+        <div className="card bg-zinc-100 min-h-screen">
+            <div className="sticky top-0 z-10 w-full bg-white h-11 flex items-center pl-4 shadow-md">
                 <Link to="/">
-                <h1>Welcome Rishabh!</h1>
+                    <h1>Welcome Rishabh!</h1>
                 </Link>
-                <Link>
-                <SidebarComp />
+                <Link className="ml-auto">
+                    <SidebarComp />
                 </Link>
             </div>
-            <div  className='bg-white rounded-md container mx-auto'>
-                <div className=' p-4  mt-4'>
-                    <div className='flex gap-3 '>
-                    <h1 className='text-xl'>Incoming Orders</h1>
-                    <div class="flex items-center">
-    <div class="relative flex items-center justify-center">
-        {/* <!-- Blinking Dot --> */}
-        <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-500 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
-    </div>
-    <span class="ml-2 text-sm font-medium text-gray-700">Live</span>
-</div>
-
+            <div className='bg-white rounded-md container mx-auto'>
+                <div className='p-4 mt-4'>
+                    <div className='flex gap-3'>
+                        <h1 className='text-xl'>Incoming Orders</h1>
+                        <div className="flex items-center">
+                            <div className="relative flex items-center justify-center">
+                                <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-500 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                            </div>
+                            <span className="ml-2 text-sm font-medium text-gray-700">Live</span>
+                        </div>
                     </div>
                     
-                    <p className=' text-gray-500 '>Receive the Orders  </p>
+                    <p className='text-gray-500'>Receive the Orders</p>
                     <hr />
                 </div>
                 <div>
@@ -59,7 +57,6 @@ function Admin() {
                     <OrderCard />
                     <OrderCard />
                 </div>
-
             </div>
         </div>
     );
