@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CartCard } from "../Card";
+import { QRCodeCanvas } from "qrcode.react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoCartOutline, IoWalletOutline } from "react-icons/io5";
 import { FaShare, FaQrcode, FaMoneyBillWave, FaUserCircle } from "react-icons/fa";
@@ -9,7 +10,6 @@ import { RiSecurePaymentLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { MdOutlineDeliveryDining, MdOutlinePayments } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline } from "react-icons/io5";
-import { QRCodeCanvas } from 'qrcode.react';
 
 function Cart() {
     const [paymentMethod, setPaymentMethod] = useState("cashOnDelivery");

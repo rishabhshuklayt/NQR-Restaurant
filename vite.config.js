@@ -13,15 +13,18 @@ export default defineConfig({
     chunkSizeWarningLimit: 1600,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'qrcode.react']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion']
+    include: ['react', 'react-dom', 'framer-motion', 'qrcode.react']
+  },
+  resolve: {
+    alias: {
+      // Add any aliases needed for dependency resolution
+    }
   }
 })

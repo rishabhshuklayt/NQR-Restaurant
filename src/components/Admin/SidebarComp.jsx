@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { FaQrcode, FaPlus, FaTrashAlt, FaHome, FaUtensils, FaUsers, FaClipboardList, FaChartPie } from 'react-icons/fa';
+import { FaQrcode, FaPlus, FaTrashAlt, FaHome, FaUtensils, FaUsers, FaClipboardList, FaChartPie, FaDownload, FaFilePdf } from 'react-icons/fa';
 import { MdCategory, MdSettings, MdTableRestaurant, MdPayment } from 'react-icons/md';
 import { TbReport } from 'react-icons/tb';
 import './SidebarComp.css';
@@ -135,13 +135,34 @@ function SidebarComp() {
                     <div className="bg-blue-50 p-4 rounded-lg mb-4 qr-section">
                         <h4 className="text-blue-800 font-medium mb-2">Generate Table QR Codes</h4>
                         <p className="text-blue-600 text-sm mb-3">Create QR codes for tables to enable easy ordering</p>
-                        <Link 
-                            to="/admin/table-qr"
-                            className="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow-sm hover:shadow-md transition-all footer-button"
-                        >
-                            <FaQrcode className="mr-2" />
-                            <span>Generate QR Codes</span>
-                        </Link>
+                        
+                        <div className="flex gap-2 mb-3">
+                            <Link 
+                                to="/admin/table-qr"
+                                className="flex-1 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-3 rounded-lg shadow-sm hover:shadow-md transition-all footer-button"
+                            >
+                                <FaQrcode className="mr-2" />
+                                <span>Generate QR</span>
+                            </Link>
+                            
+                            <Link 
+                                to="/admin/table-qr?format=pdf"
+                                className="flex-1 inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-3 rounded-lg shadow-sm hover:shadow-md transition-all footer-button"
+                            >
+                                <FaFilePdf className="mr-2" />
+                                <span>PDF Export</span>
+                            </Link>
+                        </div>
+                        
+                        <div className="text-xs text-gray-600 bg-blue-100 p-2 rounded">
+                            <p className="mb-1"><strong>PDF includes:</strong></p>
+                            <ul className="list-disc pl-4 space-y-0.5">
+                                <li>FoodCrafters branding</li>
+                                <li>Table name with stylish background</li>
+                                <li>Food UI elements</li>
+                                <li>Ready to print format</li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <div className="flex justify-between">
