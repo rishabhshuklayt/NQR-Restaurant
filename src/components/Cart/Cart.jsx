@@ -17,7 +17,7 @@ function Cart() {
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const [customerName, setCustomerName] = useState("Guest");
     const [tableNo, setTableNo] = useState("T-12");
-    const [orderId, setOrderId] = useState("ORD" + Math.floor(100000 + Math.random() * 900000)); // Random 6-digit order ID
+    const [orderId, setOrderId] = useState("ORD" + Math.floor(100000 + Math.random() * 900000));
     const [upiId] = useState("8922091211@kotak811");
     const [customerEmail, setCustomerEmail] = useState("");
     
@@ -70,7 +70,7 @@ function Cart() {
 
     const openUpiApp = () => {
         // UPI deep link format
-        const upiUrl = `upi://pay?pa=${upiId}&pn=FoodCrafters&cu=INR&am=${total.toFixed(2)}&tn=Order:${orderId}-${customerName}-Table:${tableNo}`;
+        const upiUrl = generateUPIUrl();
         window.location.href = upiUrl;
     }
 
@@ -238,7 +238,7 @@ function Cart() {
                             <span className="text-green-600">${total.toFixed(2)}</span>
                         </div>
                     </div>
-        </div>
+                </div>
 
                 {/* Payment Options - Show when Online Payment is selected */}
                 {paymentMethod === "onlinePayment" && (
@@ -270,9 +270,9 @@ function Cart() {
                                         <div>
                                             <p className="text-gray-600">Amount</p>
                                             <p className="font-medium text-green-600">${total.toFixed(2)}</p>
-                                        </div>
-                                    </div>
-                                </div>
+          </div>
+        </div>
+      </div>
 
                                 {/* QR Code */}
                                 <div className="bg-white p-6 rounded-lg shadow-inner mb-6">
@@ -288,9 +288,9 @@ function Cart() {
                                             <span className="bg-white px-4 py-1 rounded-full text-xs font-medium text-gray-600 shadow-sm border">
                                                 Scan to Pay
                                             </span>
-                                        </div>
-                                    </div>
-                                </div>
+        </div>
+        </div>
+      </div>
 
                                 {/* UPI Details */}
                                 <div className="w-full bg-gray-50 rounded-lg p-4 mb-6">
